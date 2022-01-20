@@ -1,6 +1,7 @@
 package infra.materialize;
 
 import com.mongodb.client.MongoClient;
+import domain.catalogo.event.CatalogoAgregado;
 import domain.catalogo.event.PeliculaAgregada;
 import io.quarkus.vertx.ConsumeEvent;
 import org.bson.Document;
@@ -18,14 +19,27 @@ public class CatalogoHandle {
         this.mongoClient = mongoClient;
     }
 
-    @ConsumeEvent(value = "sofka.catalogo.peliculaagregada", blocking = true)
-    void consumeProgramCreated(PeliculaAgregada event) {
+    @ConsumeEvent(value = "sofka.catalogo.catalogoagregado", blocking = true)
+    void consumeCatalogoAgregado(CatalogoAgregado event) {
         Map<String, Object> document = new HashMap<>();
         document.put("_id", event.getAggregateId());
         document.put("name", event.getTitulo());
 
         mongoClient.getDatabase("queries")
-                .getCollection("program")
+                .getCollection("catalogo")
+                .insertOne(new Document(document));
+    }
+
+    @ConsumeEvent(value = "sofka.catalogo.peliculaagregada", blocking = true)
+    void consumePeliculaAgregada(PeliculaAgregada event) {
+        Map<String, Object> document = new HashMap<>();
+        document.put("_id", event.getAggregateId());
+        document.put("name", event.getTitulo());
+        document.put("sinopsis", event.getSinopsis());
+        document.put("year", event.getYear());
+
+        mongoClient.getDatabase("queries")
+                .getCollection("pelicula")
                 .insertOne(new Document(document));
     }
 }

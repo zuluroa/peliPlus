@@ -14,16 +14,13 @@ public class PeliculaAgregada extends DomainEvent {
     private final String sinopsis;
     @NotBlank
     private final String year;
-    @NotBlank
-    private final String url;
 
-    public PeliculaAgregada(String id, String titulo, String sinopsis, String year, String url) {
+    public PeliculaAgregada(String id, String titulo, String sinopsis, String year) {
         super("sofka.catalogo.peliculaagregada");
         this.id = id;
         this.titulo = titulo;
         this.sinopsis = sinopsis;
         this.year = year;
-        this.url = url;
     }
 
     @Override
@@ -43,7 +40,4 @@ public class PeliculaAgregada extends DomainEvent {
         return year;
     }
 
-    public String getUrl() {
-        return url;
-    }
 }

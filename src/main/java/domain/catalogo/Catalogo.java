@@ -6,12 +6,12 @@ import domain.generic.AggregateRoot;
 import domain.generic.DomainEvent;
 
 import java.util.List;
-import java.util.Map;
+import java.util.Set;
 
 public class Catalogo extends AggregateRoot {
 
     protected String titulo;
-    protected Map<String, Pelicula> peliculas;
+    protected Set<Pelicula> peliculas;
 
     private Catalogo(String id) {
         super(id);
@@ -31,15 +31,15 @@ public class Catalogo extends AggregateRoot {
         return catalogo;
     }
 
-    public void addPelicula(String id, String titulo, String sinopsis, String year, String url){
-        appendChange(new PeliculaAgregada(id, titulo, sinopsis, year, url)).apply();
+    public void addPelicula(String id, String titulo, String sinopsis, String year){
+        appendChange(new PeliculaAgregada(id, titulo, sinopsis, year)).apply();
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public Map<String, Pelicula> getPeliculas() {
+    public Set<Pelicula> getPeliculas() {
         return peliculas;
     }
 }

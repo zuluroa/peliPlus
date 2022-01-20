@@ -21,8 +21,8 @@ public class AgregarPeliculaUseCase implements Function<AgregarPeliculaCommand, 
     @Override
     public List<DomainEvent> apply(AgregarPeliculaCommand command) {
         var events = repository.getEventsBy("catalogo", command.getId());
-        var catalogo = Catalogo.from(command.getId(),events);
-        catalogo.addPelicula(command.getId(), command.getTitulo(), command.getSinopsis(), command.getYear(), command.getUrl());
+        var catalogo = Catalogo.from(command.getCatalogoId(),events);
+        catalogo.addPelicula(command.getId(), command.getTitulo(), command.getSinopsis(), command.getYear());
         return catalogo.getUncommittedChanges();
     }
 }

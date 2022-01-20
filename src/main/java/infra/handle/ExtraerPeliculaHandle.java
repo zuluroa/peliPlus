@@ -5,6 +5,9 @@ import infra.generic.UseCaseHandle;
 import io.quarkus.vertx.ConsumeEvent;
 import usecase.ExtraerDatoPelicula;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class ExtraerPeliculaHandle extends UseCaseHandle {
 
     private final ExtraerDatoPelicula extraerDatoPelicula;
@@ -13,9 +16,9 @@ public class ExtraerPeliculaHandle extends UseCaseHandle {
         this.extraerDatoPelicula = extraerDatoPelicula;
     }
 
-    @ConsumeEvent(value = "sofka.catalogo.pelicula")
+    @ConsumeEvent(value = "sofka.catalogo.estrenos")
     void consumeBlocking(DatoPeliculaCommand command) {
         var events = extraerDatoPelicula.apply(command);
-        savePelicula(command.getId(), events);
+        savePelicula(command.getCatalogoId(), events);
     }
 }

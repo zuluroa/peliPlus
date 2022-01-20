@@ -18,11 +18,11 @@ public abstract class UseCaseHandle {
     @Inject
     private BusService busService;;
 
-    public void savePelicula(String peliculaId, List<DomainEvent> events) {
+    public void savePelicula(String catalogoId, List<DomainEvent> events) {
         events.stream().map(event -> {
             String eventBody = EventSerializer.instance().serialize(event);
             return new StoredEvent(event.getClass().getTypeName(), new Date(), eventBody);
-        }).forEach(storedEvent -> repository.saveEvent("program", peliculaId, storedEvent));
+        }).forEach(storedEvent -> repository.saveEvent("catalogo", catalogoId, storedEvent));
 
         events.forEach(busService::send);
     }

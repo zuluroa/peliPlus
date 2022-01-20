@@ -7,56 +7,16 @@ import javax.validation.constraints.NotBlank;
 public class DatoPeliculaCommand extends Command {
 
     @NotBlank
-    private  String id;
-    @NotBlank
-    private  String titulo;
-    @NotBlank
-    private  String sinopsis;
-    @NotBlank
-    private  String year;
-    @NotBlank
-    private  String url;
+    private String CatalogoId;
 
     public DatoPeliculaCommand() {
     }
 
-    public String getId() {
-        return id;
+    public String getCatalogoId() {
+        return CatalogoId;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getSinopsis() {
-        return sinopsis;
-    }
-
-    public void setSinopsis(String sinopsis) {
-        this.sinopsis = sinopsis;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCatalogoId(String catalogoId) {
+        CatalogoId = catalogoId;
     }
 }

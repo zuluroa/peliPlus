@@ -15,7 +15,7 @@ public class AgregarPeliculaCommand extends Command {
     @NotBlank
     private  String year;
     @NotBlank
-    private  String url;
+    private String CatalogoId;
 
     public AgregarPeliculaCommand() {
     }
@@ -52,11 +52,11 @@ public class AgregarPeliculaCommand extends Command {
         this.year = year;
     }
 
-    public String getUrl() {
-        return url;
+    public String getCatalogoId() {
+        return CatalogoId;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public void setCatalogoId(String catalogoId) {
+        CatalogoId = catalogoId;
     }
 }

@@ -13,15 +13,12 @@ public class Pelicula {
     private final String sinopsis;
     @NotBlank
     private final String year;
-    @NotBlank
-    private final String url;
 
-    public Pelicula(String id, String titulo, String sinopsis, String year, String url) {
-        this.id = Objects.requireNonNull(id);
-        this.titulo = Objects.requireNonNull(titulo);
-        this.sinopsis = Objects.requireNonNull(sinopsis);
-        this.year = Objects.requireNonNull(year);
-        this.url = Objects.requireNonNull(url);
+    public Pelicula(String id, String titulo, String sinopsis, String year) {
+        this.id = id;
+        this.titulo = titulo;
+        this.sinopsis = sinopsis;
+        this.year = year;
     }
 
     public String getId() {
@@ -40,7 +37,13 @@ public class Pelicula {
         return year;
     }
 
-    public String getUrl() {
-        return url;
+    @Override
+    public String toString() {
+        return "Pelicula{" +
+                "id='" + id + '\'' +
+                ", titulo='" + titulo + '\'' +
+                ", sinopsis='" + sinopsis + '\'' +
+                ", year='" + year + '\'' +
+                '}';
     }
 }
