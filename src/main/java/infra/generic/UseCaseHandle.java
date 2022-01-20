@@ -16,7 +16,7 @@ public abstract class UseCaseHandle {
     private EventStoreRepository repository;
 
     @Inject
-    private BusService busService;;
+    private BusService busService;
 
     public void savePelicula(String catalogoId, List<DomainEvent> events) {
         events.stream().map(event -> {

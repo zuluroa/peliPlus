@@ -7,7 +7,7 @@ import javax.validation.constraints.NotBlank;
 public class AgregarPeliculaCommand extends Command {
 
     @NotBlank
-    private  String id;
+    private  String peliculaId;
     @NotBlank
     private  String titulo;
     @NotBlank
@@ -16,16 +16,18 @@ public class AgregarPeliculaCommand extends Command {
     private  String year;
     @NotBlank
     private String CatalogoId;
+    @NotBlank
+    private String url;
 
     public AgregarPeliculaCommand() {
     }
 
-    public String getId() {
-        return id;
+    public String getPeliculaId() {
+        return peliculaId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPeliculaId(String peliculaId) {
+        this.peliculaId = peliculaId;
     }
 
     public String getTitulo() {
@@ -58,5 +60,9 @@ public class AgregarPeliculaCommand extends Command {
 
     public void setCatalogoId(String catalogoId) {
         CatalogoId = catalogoId;
+    }
+
+    public String getUrl() {
+        return url;
     }
 }

@@ -7,16 +7,16 @@ import javax.validation.constraints.NotBlank;
 public class DatoPeliculaCommand extends Command {
 
     @NotBlank
-    private String CatalogoId;
+    private String catalogoId;
 
     public DatoPeliculaCommand() {
     }
 
     public String getCatalogoId() {
-        return CatalogoId;
+        return catalogoId;
     }
 
     public void setCatalogoId(String catalogoId) {
-        CatalogoId = catalogoId;
+        this.catalogoId = catalogoId;
     }
 }

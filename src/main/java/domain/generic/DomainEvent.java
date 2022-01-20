@@ -47,4 +47,15 @@ public abstract class DomainEvent implements Serializable {
     public String getAggregateId() {
         return aggregateId;
     }
+
+    @Override
+    public String toString() {
+        return "DomainEvent{" +
+                "type='" + type + '\'' +
+                ", instant=" + instant +
+                ", aggregateId='" + aggregateId + '\'' +
+                ", correlationId='" + correlationId + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }

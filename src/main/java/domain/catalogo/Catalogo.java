@@ -8,7 +8,7 @@ import domain.generic.DomainEvent;
 import java.util.List;
 import java.util.Set;
 
-public class Catalogo extends AggregateRoot {
+public class Catalogo extends AggregateRoot{
 
     protected String titulo;
     protected Set<Pelicula> peliculas;
@@ -31,8 +31,8 @@ public class Catalogo extends AggregateRoot {
         return catalogo;
     }
 
-    public void addPelicula(String id, String titulo, String sinopsis, String year){
-        appendChange(new PeliculaAgregada(id, titulo, sinopsis, year)).apply();
+    public void addPelicula(String id, String titulo, String sinopsis, String year, String url){
+        appendChange(new PeliculaAgregada(id, titulo, sinopsis, year, url)).apply();
     }
 
     public String getTitulo() {

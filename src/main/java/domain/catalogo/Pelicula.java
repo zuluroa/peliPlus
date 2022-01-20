@@ -1,28 +1,30 @@
 package domain.catalogo;
 
 import javax.validation.constraints.NotBlank;
-import java.util.Objects;
 
 public class Pelicula {
 
     @NotBlank
-    private final String id;
+    private final String peliculaId;
     @NotBlank
     private final String titulo;
     @NotBlank
     private final String sinopsis;
     @NotBlank
     private final String year;
+    @NotBlank
+    private final String url;
 
-    public Pelicula(String id, String titulo, String sinopsis, String year) {
-        this.id = id;
+    public Pelicula(String peliculaId, String titulo, String sinopsis, String year, String url) {
+        this.peliculaId = peliculaId;
         this.titulo = titulo;
         this.sinopsis = sinopsis;
         this.year = year;
+        this.url = url;
     }
 
-    public String getId() {
-        return id;
+    public String getPeliculaId() {
+        return peliculaId;
     }
 
     public String getTitulo() {
@@ -37,13 +39,18 @@ public class Pelicula {
         return year;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
     @Override
     public String toString() {
         return "Pelicula{" +
-                "id='" + id + '\'' +
+                "peliculaId='" + peliculaId + '\'' +
                 ", titulo='" + titulo + '\'' +
                 ", sinopsis='" + sinopsis + '\'' +
                 ", year='" + year + '\'' +
+                ", url='" + url + '\'' +
                 '}';
     }
 }

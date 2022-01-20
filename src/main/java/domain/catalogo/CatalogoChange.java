@@ -17,7 +17,7 @@ public class CatalogoChange implements EventChange {
         listener((PeliculaAgregada event) -> {
             catalogo.peliculas.add(
                     new Pelicula(UUID.randomUUID().toString(), event.getTitulo(),
-                            event.getSinopsis(), event.getYear()));
+                            event.getSinopsis(), event.getYear(), event.getUrl()));
         });
     }
 }
