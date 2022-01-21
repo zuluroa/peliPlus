@@ -19,6 +19,6 @@ public class AgregarCatalogoHandle extends UseCaseHandle {
     @ConsumeEvent(value = "sofka.catalogo.catalogo")
     void consumeBlocking(AgregarCatalogoCommand command) {
         var events = agregarCatalogoUseCase.apply(command);
-        savePelicula(command.getId(), events);
+        process(command.getId(), events);
     }
 }

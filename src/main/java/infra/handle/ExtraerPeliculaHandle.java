@@ -19,6 +19,6 @@ public class ExtraerPeliculaHandle extends UseCaseHandle {
     @ConsumeEvent(value = "sofka.catalogo.estrenos")
     void consumeBlocking(DatoPeliculaCommand command) {
         var events = extraerDatoPelicula.apply(command);
-        savePelicula(command.getCatalogoId(), events);
+        process(command.getCatalogoId(), events);
     }
 }

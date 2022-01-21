@@ -18,7 +18,7 @@ public abstract class UseCaseHandle {
     @Inject
     private BusService busService;
 
-    public void savePelicula(String catalogoId, List<DomainEvent> events) {
+    public void process(String catalogoId, List<DomainEvent> events) {
         events.stream().map(event -> {
             String eventBody = EventSerializer.instance().serialize(event);
             return new StoredEvent(event.getClass().getTypeName(), new Date(), eventBody);

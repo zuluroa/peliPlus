@@ -21,7 +21,6 @@ public class ExtraerDatoPelicula implements Function<DatoPeliculaCommand, List<D
 
     private static final String URL_BASE = "https://pelisplus.so";
     private final EventStoreRepository repository;
-    VertxOptions vertxOptions = new VertxOptions();
 
 
     public ExtraerDatoPelicula(EventStoreRepository repository) {
@@ -53,12 +52,11 @@ public class ExtraerDatoPelicula implements Function<DatoPeliculaCommand, List<D
             }
             return catalogo.getUncommittedChanges();
         } catch (IOException e) {
-            return null;
+           throw  new ExtractPeliculaException();
         }
     }
 
     private Document getEstrenos() throws IOException {
-        vertxOptions.setBlockedThreadCheckInterval(5000);
         return Jsoup.connect(URL_BASE + "/estrenos")
                 .userAgent("Mozilla/5.0")
                 .timeout(1 * 1000)
@@ -67,7 +65,6 @@ public class ExtraerDatoPelicula implements Function<DatoPeliculaCommand, List<D
     }
 
     private Document getPelicula(String urlPelicula) throws IOException {
-        vertxOptions.setBlockedThreadCheckInterval(5000);
         return Jsoup.connect(URL_BASE + urlPelicula)
                 .userAgent("Mozilla/5.0")
                 .timeout(2 * 1000)
