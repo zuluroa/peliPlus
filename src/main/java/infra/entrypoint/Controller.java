@@ -11,11 +11,10 @@ import javax.ws.rs.core.Response;
 
 @Path("/api")
 public class Controller {
-    private final MongoClient mongoClient;
+
     private final EventBus bus;
 
-    public Controller(MongoClient mongoClient, EventBus bus) {
-        this.mongoClient = mongoClient;
+    public Controller(EventBus bus) {
         this.bus = bus;
     }
 
@@ -24,7 +23,6 @@ public class Controller {
     @Path("/catalogo")
     public Response create(AgregarCatalogoCommand command) {
         bus.publish(command.getType(), command);
-        System.out.println("type--->" + command.getType());
         return Response.ok().build();
     }
 
